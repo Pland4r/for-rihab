@@ -1,0 +1,695 @@
+<title>For Rihab</title>
+<meta name="description" content="A little website for Rihab, the love of my life.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..700;1,400..600&family=Quicksand:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    color-scheme: light;
+    --cream:#FFF8F5;
+    --blush:#FDECF1;
+    --blush-2:#FAD9E3;
+    --lilac:#EFE2F8;
+    --pink:#E9779B;
+    --pink-deep:#B8456F;
+    --plum:#4A2B3A;
+    --mauve:#8E6A7A;
+    --gold:#DCA96B;
+    --white:#FFFFFF;
+    --line:rgba(184,69,111,.16);
+    --shadow:0 18px 40px -22px rgba(122,45,78,.45);
+    --shadow-lift:0 26px 55px -24px rgba(122,45,78,.5);
+    --script:"Great Vibes",cursive;
+    --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+    --sans:"Quicksand","Trebuchet MS",system-ui,sans-serif;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--plum);
+    font-family:var(--sans);
+    font-size:clamp(1rem,.97rem + .25vw,1.1rem);
+    font-weight:500;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  /* ---------- dreamy background ---------- */
+  .sky{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    background:
+      radial-gradient(55rem 38rem at 82% -8%, rgba(233,119,155,.26), transparent 62%),
+      radial-gradient(45rem 34rem at 6% 12%, rgba(207,168,238,.24), transparent 60%),
+      radial-gradient(60rem 42rem at 50% 104%, rgba(250,217,227,.55), transparent 65%),
+      linear-gradient(180deg,#FFF8F5 0%,#FFF3F6 45%,#FDF0F5 100%);
+  }
+  .sparkles{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .sparkle{
+    position:absolute;
+    width:6px;height:6px;
+    border-radius:50%;
+    background:var(--gold);
+    opacity:.5;
+    animation:twinkle 4.5s ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%,100%{opacity:.14;transform:scale(.6)}
+    50%{opacity:.7;transform:scale(1)}
+  }
+
+  /* floating hearts */
+  .hearts{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .hearts svg{
+    position:absolute;
+    bottom:-60px;
+    color:var(--pink);
+    opacity:.34;
+    animation:drift linear infinite;
+  }
+  @keyframes drift{
+    from{transform:translateY(0) rotate(0deg);opacity:0}
+    12%{opacity:.34}
+    88%{opacity:.26}
+    to{transform:translateY(-112vh) rotate(26deg);opacity:0}
+  }
+
+  .page{
+    position:relative;
+    z-index:1;
+    max-width:62rem;
+    margin:0 auto;
+    padding-inline:clamp(1rem,5vw,3rem);
+    padding-block:clamp(2.25rem,6vw,4.5rem) clamp(2.5rem,7vw,5rem);
+  }
+
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--pink-deep);
+    margin:0;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:1.1rem;
+  }
+  .frame{
+    position:relative;
+    width:min(21rem,72vw);
+    aspect-ratio:1/1;
+    margin-bottom:.6rem;
+  }
+  .frame::before{
+    content:"";
+    position:absolute;
+    inset:-14px;
+    border-radius:50%;
+    border:1px solid var(--gold);
+    opacity:.55;
+  }
+  .frame::after{
+    content:"";
+    position:absolute;
+    inset:-30px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(233,119,155,.2),transparent 68%);
+    filter:blur(6px);
+  }
+  .frame-img{
+    position:relative;
+    z-index:1;
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    overflow:hidden;
+    background:var(--blush);
+    box-shadow:var(--shadow-lift), 0 0 0 8px var(--white), 0 0 0 9px var(--blush-2);
+  }
+  .frame-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:60% 24%;
+    display:block;
+  }
+  .badge{
+    position:absolute;
+    z-index:2;
+    right:4%;
+    bottom:4%;
+    width:3.4rem;
+    height:3.4rem;
+    border-radius:50%;
+    background:var(--white);
+    box-shadow:var(--shadow);
+    display:grid;
+    place-items:center;
+    color:var(--pink);
+    animation:beat 2.2s ease-in-out infinite;
+  }
+  @keyframes beat{
+    0%,100%{transform:scale(1)}
+    14%{transform:scale(1.14)}
+    28%{transform:scale(1)}
+    42%{transform:scale(1.1)}
+  }
+
+  .name{
+    font-family:var(--script);
+    font-weight:400;
+    font-size:clamp(4rem,16vw,8.5rem);
+    line-height:.92;
+    letter-spacing:.01em;
+    margin:0;
+    color:var(--pink-deep);
+    text-shadow:0 2px 0 rgba(255,255,255,.9);
+  }
+  .tagline{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(1.15rem,1rem + .8vw,1.7rem);
+    line-height:1.4;
+    color:var(--plum);
+    margin:0;
+    max-width:32rem;
+    text-wrap:balance;
+  }
+  .hero-note{
+    margin:0;
+    max-width:30rem;
+    color:var(--mauve);
+    font-size:1rem;
+  }
+
+  /* ---------- flourish ---------- */
+  .flourish{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:.85rem;
+    margin-block:clamp(2.75rem,7vw,4.5rem);
+    color:var(--blush-2);
+  }
+  .flourish span{
+    height:1px;
+    width:min(9rem,22vw);
+    background:linear-gradient(90deg,transparent,var(--pink),transparent);
+    opacity:.5;
+  }
+  .flourish svg{color:var(--pink);opacity:.75}
+
+  /* ---------- section heads ---------- */
+  .section-head{
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:.55rem;
+    margin-bottom:clamp(1.75rem,4vw,2.5rem);
+  }
+  .section-head h2{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(1.8rem,1.4rem + 2vw,2.9rem);
+    line-height:1.15;
+    margin:0;
+    color:var(--plum);
+    text-wrap:balance;
+  }
+  .section-head p{
+    margin:0;
+    color:var(--mauve);
+    max-width:32rem;
+  }
+
+  /* ---------- reason card ---------- */
+  .reason-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:34px;
+    padding:clamp(1.75rem,5vw,3.25rem);
+    box-shadow:var(--shadow);
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:1.4rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .reason-card::before{
+    content:"";
+    position:absolute;
+    inset:0 0 auto 0;
+    height:5px;
+    background:linear-gradient(90deg,var(--lilac),var(--pink),var(--gold),var(--pink),var(--lilac));
+  }
+  .reason-no{
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:.26em;
+    text-transform:uppercase;
+    color:var(--pink-deep);
+    font-variant-numeric:tabular-nums;
+    margin:0;
+  }
+  .reason{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(1.35rem,1.05rem + 1.7vw,2.25rem);
+    line-height:1.35;
+    color:var(--plum);
+    margin:0;
+    max-width:30rem;
+    min-height:2.7em;
+    text-wrap:balance;
+    transition:opacity .35s ease,transform .35s ease;
+  }
+  .reason.turning{opacity:0;transform:translateY(10px)}
+
+  .btn{
+    font-family:var(--sans);
+    font-size:.85rem;
+    font-weight:700;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--white);
+    background:var(--pink-deep);
+    border:none;
+    border-radius:999px;
+    padding:.9rem 1.7rem;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:.55rem;
+    box-shadow:0 12px 24px -12px rgba(184,69,111,.8);
+    transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+  }
+  .btn:hover{background:#A63B62;transform:translateY(-2px);box-shadow:0 18px 30px -14px rgba(184,69,111,.85)}
+  .btn:active{transform:translateY(0)}
+  .btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+  /* ---------- truths ---------- */
+  .truths{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(15.5rem,1fr));
+    gap:clamp(1rem,2.5vw,1.5rem);
+    margin:0;
+    padding:0;
+    list-style:none;
+  }
+  .truth{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:26px;
+    padding:1.5rem 1.5rem 1.6rem;
+    box-shadow:var(--shadow);
+    display:flex;
+    flex-direction:column;
+    gap:.6rem;
+  }
+  .truth .ico{
+    width:2.5rem;height:2.5rem;
+    border-radius:50%;
+    display:grid;place-items:center;
+    background:var(--blush);
+    color:var(--pink-deep);
+  }
+  .truth h3{
+    font-family:var(--serif);
+    font-size:1.2rem;
+    font-weight:600;
+    margin:0;
+    color:var(--plum);
+  }
+  .truth p{margin:0;color:var(--mauve);font-size:.98rem;line-height:1.6}
+
+  /* ---------- open when ---------- */
+  .envelopes{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(15.5rem,1fr));
+    gap:clamp(1rem,2.5vw,1.5rem);
+  }
+  .env{
+    background:linear-gradient(165deg,var(--blush),var(--white) 62%);
+    border:1px solid var(--line);
+    border-radius:26px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .env summary{
+    cursor:pointer;
+    list-style:none;
+    padding:1.4rem 1.5rem;
+    font-family:var(--serif);
+    font-size:1.1rem;
+    font-weight:600;
+    color:var(--pink-deep);
+    display:flex;
+    align-items:center;
+    gap:.7rem;
+    transition:background .2s ease;
+  }
+  .env summary::-webkit-details-marker{display:none}
+  .env summary:hover{background:rgba(233,119,155,.09)}
+  .env summary:focus-visible{outline:3px solid var(--gold);outline-offset:-3px}
+  .env summary svg{flex:none;color:var(--pink);transition:transform .3s ease}
+  .env[open] summary svg{transform:rotate(-8deg) scale(1.12)}
+  .env p{
+    margin:0;
+    padding:0 1.5rem 1.5rem;
+    color:var(--plum);
+    font-size:.98rem;
+    line-height:1.7;
+  }
+
+  /* ---------- letter ---------- */
+  .letter{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:34px;
+    box-shadow:var(--shadow);
+    padding:clamp(1.75rem,5vw,3.5rem);
+    max-width:40rem;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    gap:1.1rem;
+    background-image:repeating-linear-gradient(180deg,transparent 0 2.5rem,rgba(233,119,155,.07) 2.5rem calc(2.5rem + 1px));
+  }
+  .letter .salutation{
+    font-family:var(--script);
+    font-size:clamp(2.1rem,1.6rem + 2vw,3rem);
+    line-height:1;
+    color:var(--pink-deep);
+    margin:0 0 .3rem;
+  }
+  .letter p{margin:0;color:var(--plum)}
+  .letter .signoff{
+    margin-top:1rem;
+    padding-top:1.4rem;
+    border-top:1px dashed var(--blush-2);
+    display:flex;
+    flex-direction:column;
+    gap:.2rem;
+  }
+  .letter .signoff .big{
+    font-family:var(--script);
+    font-size:clamp(1.9rem,1.5rem + 1.8vw,2.7rem);
+    line-height:1.15;
+    color:var(--pink-deep);
+  }
+  .letter .signoff .small{
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--mauve);
+  }
+
+  footer{
+    margin-top:clamp(2.5rem,6vw,4rem);
+    text-align:center;
+    color:var(--mauve);
+    font-size:.88rem;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:.6rem;
+  }
+  footer .heart{color:var(--pink)}
+
+  /* ---------- entrance ---------- */
+  .rise{animation:rise .85s cubic-bezier(.2,.75,.25,1) backwards}
+  .d1{animation-delay:.05s}.d2{animation-delay:.16s}.d3{animation-delay:.28s}.d4{animation-delay:.4s}
+  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .hearts,.sparkles{display:none}
+  }
+</style>
+
+<div class="sky"></div>
+<div class="sparkles" id="sparkles" aria-hidden="true"></div>
+<div class="hearts" id="hearts" aria-hidden="true"></div>
+
+<main class="page">
+
+  <section class="hero">
+    <div class="frame rise d1">
+      <div class="frame-img">
+        <img src="rihab.jpg" alt="Rihab, smiling on the beach with the sea behind her">
+      </div>
+      <div class="badge" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-9.6-9A5.4 5.4 0 0 1 12 6.4 5.4 5.4 0 0 1 21.6 12c-2.1 4.3-9.6 9-9.6 9z"/></svg>
+      </div>
+    </div>
+
+    <p class="eyebrow rise d2">for the loveliest girl in the world</p>
+    <h1 class="name rise d2">Rihab</h1>
+    <p class="tagline rise d3">You are the love of my life &mdash; and this whole little corner of the internet exists just to say so.</p>
+    <p class="hero-note rise d4">Made for you, so that on any day you forget how amazing you are, you have somewhere soft to go and be reminded.</p>
+  </section>
+
+  <div class="flourish" aria-hidden="true">
+    <span></span>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-9.6-9A5.4 5.4 0 0 1 12 6.4 5.4 5.4 0 0 1 21.6 12c-2.1 4.3-9.6 9-9.6 9z"/></svg>
+    <span></span>
+  </div>
+
+  <section>
+    <div class="section-head">
+      <p class="eyebrow">press the button, habibti</p>
+      <h2>Reasons I love you</h2>
+      <p>There are more than this. These are just the ones I could fit.</p>
+    </div>
+
+    <div class="reason-card">
+      <p class="reason-no" id="reason-no">Reason no. 01</p>
+      <p class="reason" id="reason" aria-live="polite">The way you say my name when you are happy about something.</p>
+      <button class="btn" id="more" type="button">
+        One more reason
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.7-9.6-9A5.4 5.4 0 0 1 12 6.4 5.4 5.4 0 0 1 21.6 12c-2.1 4.3-9.6 9-9.6 9z"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <div class="flourish" aria-hidden="true">
+    <span></span>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-9.6-9A5.4 5.4 0 0 1 12 6.4 5.4 5.4 0 0 1 21.6 12c-2.1 4.3-9.6 9-9.6 9z"/></svg>
+    <span></span>
+  </div>
+
+  <section>
+    <div class="section-head">
+      <p class="eyebrow">not opinions</p>
+      <h2>Things that are simply true about you</h2>
+    </div>
+
+    <ul class="truths">
+      <li class="truth">
+        <span class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-4 4 3.5 3.5 0 0 0-1 6.8V17a3 3 0 0 0 6 0V3z"/><path d="M12 3a4 4 0 0 1 4 4 3.5 3.5 0 0 1 1 6.8V17a3 3 0 0 1-6 0"/></svg></span>
+        <h3>Your mind</h3>
+        <p>You think in a way that makes complicated things sit down and behave. I have watched you untangle in ten minutes what other people circle for a week.</p>
+      </li>
+      <li class="truth">
+        <span class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg></span>
+        <h3>Your laugh</h3>
+        <p>It arrives before you mean it to, and it takes the whole room with it. It is my favourite sound on this earth, and it is not close.</p>
+      </li>
+      <li class="truth">
+        <span class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-9.6-9A5.4 5.4 0 0 1 12 6.4 5.4 5.4 0 0 1 21.6 12c-2.1 4.3-9.6 9-9.6 9z"/></svg></span>
+        <h3>Your heart</h3>
+        <p>You are kind in the unglamorous way &mdash; the kind that costs you something and asks for nothing back. Most people only perform that. You just do it, quietly.</p>
+      </li>
+      <li class="truth">
+        <span class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.4 5.2 5.6.7-4.1 3.9 1.1 5.6L12 15.8 6.9 18.4 8 12.8 3.9 8.9l5.6-.7z"/></svg></span>
+        <h3>Your courage</h3>
+        <p>You have carried things that would have flattened most people, and you did it without going hard or cold. Staying soft after all of that is the bravest thing I know of.</p>
+      </li>
+      <li class="truth">
+        <span class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg></span>
+        <h3>Your presence</h3>
+        <p>Rooms are better when you are in them. That is not flattery, it is an observation other people keep making to me about you.</p>
+      </li>
+      <li class="truth">
+        <span class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 1 0-7.1 7.1L12 21.4l8.8-8.7a5 5 0 0 0 0-7.1z"/></svg></span>
+        <h3>Your effect on me</h3>
+        <p>You make me want to be a better version of myself &mdash; not by asking me to be, just by existing nearby. That is a strange and enormous power.</p>
+      </li>
+    </ul>
+  </section>
+
+  <div class="flourish" aria-hidden="true">
+    <span></span>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-9.6-9A5.4 5.4 0 0 1 12 6.4 5.4 5.4 0 0 1 21.6 12c-2.1 4.3-9.6 9-9.6 9z"/></svg>
+    <span></span>
+  </div>
+
+  <section>
+    <div class="section-head">
+      <p class="eyebrow">little letters</p>
+      <h2>Open when&hellip;</h2>
+      <p>Tap the one that matches your day.</p>
+    </div>
+
+    <div class="envelopes">
+      <details class="env">
+        <summary><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg>you are sad</summary>
+        <p>Come here. You do not have to explain it or justify it or be productive about it. Sad days are not you failing, they are just weather. Sit in it, let it pass, and remember that there is someone whose whole day gets better the second your name appears on his screen. I am one message away, always.</p>
+      </details>
+
+      <details class="env">
+        <summary><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg>you miss me</summary>
+        <p>I miss you too. Probably more, though I know you will argue about that. Close your eyes and pick your favourite day with me &mdash; I am thinking about the same one. Distance is just a number of hours between now and the next time I get to look at you properly.</p>
+      </details>
+
+      <details class="env">
+        <summary><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg>you feel ugly</summary>
+        <p>Then your mirror is broken, because mine works perfectly. You are beautiful in a way that photographs keep failing to explain &mdash; and I am not only talking about your face, your eyes, or that smile that ruins me. You are beautiful the way a good song is beautiful. It is not up for debate. I was there. I saw you.</p>
+      </details>
+
+      <details class="env">
+        <summary><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg>you doubt yourself</summary>
+        <p>You are not behind. You are not too much. You are not failing. You are one of the most capable people I have ever met, and I am not a generous judge. Whatever you are doubting today, I would bet everything I own on you. I already did, in a way.</p>
+      </details>
+    </div>
+  </section>
+
+  <div class="flourish" aria-hidden="true">
+    <span></span>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-9.6-9A5.4 5.4 0 0 1 12 6.4 5.4 5.4 0 0 1 21.6 12c-2.1 4.3-9.6 9-9.6 9z"/></svg>
+    <span></span>
+  </div>
+
+  <section class="letter">
+    <p class="salutation">My Rihab,</p>
+    <p>I am not good at saying all of this out loud. It comes out smaller than I mean it, so I built it somewhere it could sit properly and stay.</p>
+    <p>You should know what you have done. Before you, I was fine &mdash; fine the way a room with the lights off is fine. Nothing wrong with it, nothing happening in it either. Then you walked in and I could suddenly see the whole place.</p>
+    <p>I know you are hard on yourself. I know there are days you look in the mirror and count only the things you would change. On those days, come here and read this in my voice: you are not too much, you are not behind, you are not failing. You are the most remarkable person I have ever met.</p>
+    <p>Whatever happens, whatever we build, wherever we end up &mdash; I am not going anywhere. You are my favourite person, my calmest place, and the best decision I never had to think twice about.</p>
+
+    <div class="signoff">
+      <span class="big">You are the love of my life.</span>
+      <span class="small">and I intend to keep proving it</span>
+    </div>
+  </section>
+
+  <footer>
+    <svg class="heart" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.7-9.6-9A5.4 5.4 0 0 1 12 6.4 5.4 5.4 0 0 1 21.6 12c-2.1 4.3-9.6 9-9.6 9z"/></svg>
+    <p style="margin:0">Come back whenever you need it. This page does not expire, it does not get tired of you, and neither do I.</p>
+  </footer>
+
+</main>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---- ambient sparkles + drifting hearts ---- */
+  if (!reduce) {
+    var sparkleBox = document.getElementById("sparkles");
+    if (sparkleBox) {
+      for (var s = 0; s < 26; s++) {
+        var dot = document.createElement("span");
+        dot.className = "sparkle";
+        dot.style.left = (Math.random() * 100).toFixed(2) + "%";
+        dot.style.top = (Math.random() * 100).toFixed(2) + "%";
+        var size = (3 + Math.random() * 4).toFixed(1);
+        dot.style.width = size + "px";
+        dot.style.height = size + "px";
+        dot.style.animationDelay = (Math.random() * 4.5).toFixed(2) + "s";
+        sparkleBox.appendChild(dot);
+      }
+    }
+
+    var heartBox = document.getElementById("hearts");
+    if (heartBox) {
+      var HEART = '<svg width="0" height="0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-9.6-9A5.4 5.4 0 0 1 12 6.4 5.4 5.4 0 0 1 21.6 12c-2.1 4.3-9.6 9-9.6 9z"/></svg>';
+      for (var h = 0; h < 12; h++) {
+        heartBox.insertAdjacentHTML("beforeend", HEART);
+        var svg = heartBox.lastElementChild;
+        var w = 10 + Math.round(Math.random() * 20);
+        svg.setAttribute("width", w);
+        svg.setAttribute("height", w);
+        svg.style.left = (Math.random() * 94).toFixed(2) + "%";
+        svg.style.animationDuration = (16 + Math.random() * 16).toFixed(1) + "s";
+        svg.style.animationDelay = (-Math.random() * 24).toFixed(1) + "s";
+      }
+    }
+  }
+
+  /* ---- reasons ---- */
+  var reasons = [
+    "The way you say my name when you are happy about something.",
+    "How you notice the one person in the room that nobody else noticed.",
+    "Your handwriting.",
+    "The face you make when you are concentrating hard on something small.",
+    "You remember things I mentioned once, months ago, and never repeated.",
+    "How you start laughing at your own story before you reach the end of it.",
+    "You are impossible to win an argument against, and I love losing to you.",
+    "The way you look in the morning, before the day has got to you.",
+    "You have never once made me feel small so that you could feel bigger.",
+    "How seriously you take the people you love.",
+    "Your taste. In music, in food, in people, in everything.",
+    "The way you dance when you think nobody is watching. I am always watching.",
+    "You ask better questions than anyone I know.",
+    "How completely you get excited about things, with no embarrassment about it.",
+    "You forgive faster than you should, and somehow it has made you stronger, not softer.",
+    "The way your hair does exactly what it wants near the sea.",
+    "You tell me the truth, including the version I did not want.",
+    "How safe the world gets when it is just the two of us.",
+    "You make ordinary days feel like something worth remembering.",
+    "Your patience with me, which I have tested and will absolutely test again.",
+    "The way you look after your people like it is a full-time job that you love.",
+    "You are beautiful in a way that photographs keep failing to explain properly.",
+    "How you say “we” without having to think about it.",
+    "The way you fall asleep in the middle of your own sentence.",
+    "You are the calm in the middle of all my noise.",
+    "Your stubbornness. Yes, that one too.",
+    "How you can make me laugh on a day I had firmly decided not to.",
+    "That you chose me. On purpose. And that you keep choosing me."
+  ];
+
+  var el = document.getElementById("reason");
+  var no = document.getElementById("reason-no");
+  var btn = document.getElementById("more");
+  if (!el || !no || !btn) { return; }
+
+  var rest = reasons.slice(1);
+  for (var i = rest.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var t = rest[i]; rest[i] = rest[j]; rest[j] = t;
+  }
+  var order = [reasons[0]].concat(rest);
+  var idx = 0;
+
+  function pad(n) { return n < 10 ? "0" + n : String(n); }
+
+  btn.addEventListener("click", function () {
+    idx = (idx + 1) % order.length;
+    el.classList.add("turning");
+    window.setTimeout(function () {
+      el.textContent = order[idx];
+      no.textContent = "Reason no. " + pad(idx + 1);
+      el.classList.remove("turning");
+    }, reduce ? 0 : 250);
+  });
+})();
+</script>
