@@ -159,27 +159,6 @@
   .lang:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
   .lang.ar{font-family:var(--arabic);font-size:1rem}
 
-  /* ---------- birthday banner (3 January only) ---------- */
-  .bday{
-    background:linear-gradient(120deg,var(--pink),#D86A97 45%,var(--gold));
-    color:var(--white);
-    border-radius:26px;
-    padding:1.5rem clamp(1.25rem,4vw,2.5rem);
-    margin-bottom:clamp(1.75rem,4vw,2.75rem);
-    box-shadow:var(--shadow-lift);
-    text-align:center;
-    display:flex;
-    flex-direction:column;
-    gap:.35rem;
-    align-items:center;
-  }
-  .bday .big{
-    font-family:var(--script);
-    font-size:clamp(2.2rem,1.6rem + 3vw,3.6rem);
-    line-height:1.15;
-  }
-  .bday p{margin:0;font-size:.98rem;opacity:.95;max-width:34rem}
-
   /* ---------- hero ---------- */
   .hero{
     display:flex;
@@ -656,11 +635,6 @@
     </div>
   </div>
 
-  <section class="bday" id="bday" hidden>
-    <span class="big" data-en="Joyeux anniversaire, Rihab" data-dr="عيد ميلاد سعيد أ رحاب">Joyeux anniversaire, Rihab</span>
-    <p data-en="It is the 3rd of January, which means the world got you today. Happy birthday, my love. Every good thing that has happened to me started with you being born." data-dr="اليوم 3 يناير، يعني اليوم اللي الدنيا ربحات فيه نتي. عيد ميلاد سعيد يا حبيبتي. كل حاجة زوينة وقعات ليا بدات من اليوم اللي تزادي فيه.">It is the 3rd of January, which means the world got you today. Happy birthday, my love. Every good thing that has happened to me started with you being born.</p>
-  </section>
-
   <section class="hero">
     <div class="frame rise d1">
       <div class="frame-img">
@@ -1001,13 +975,10 @@
   var daysUnit = document.getElementById("days-unit");
   var bdayNum = document.getElementById("bday-num");
   var bdayUnit = document.getElementById("bday-unit");
-  var banner = document.getElementById("bday");
   var reasonEl = document.getElementById("reason");
   var reasonNo = document.getElementById("reason-no");
   var moreBtn = document.getElementById("more");
   var moreLabel = document.getElementById("more-label");
-
-  if (banner && today.getMonth() === 0 && today.getDate() === 3) { banner.hidden = false; }
 
   /* one shuffled running order, shared by both languages */
   var order = [];
