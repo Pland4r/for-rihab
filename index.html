@@ -1,8 +1,9 @@
+<meta charset="utf-8">
 <title>For Rihab</title>
 <meta name="description" content="A little website for Rihab, the love of my life. From Abdeljalil.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..700;1,400..600&family=Quicksand:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..700;1,400..600&family=Quicksand:wght@400;500;600;700&display=swap">
 <style>
   :root{
     color-scheme: light;
@@ -23,7 +24,33 @@
     --serif:"Playfair Display",Georgia,"Times New Roman",serif;
     --sans:"Quicksand","Trebuchet MS",system-ui,sans-serif;
     --arabic:"Amiri","Segoe UI",serif;
+    --body-lh:1.7;
   }
+
+  /* Darija mode: Arabic faces, no uppercase tricks, roomier lines */
+  :root.dr{
+    --script:"Amiri","Segoe UI",serif;
+    --serif:"Amiri","Segoe UI",serif;
+    --sans:"Cairo","Segoe UI",sans-serif;
+    --body-lh:1.95;
+  }
+  :root.dr .eyebrow,
+  :root.dr .stat .unit,
+  :root.dr .story .when,
+  :root.dr .reason-no,
+  :root.dr .letter .signoff .small,
+  :root.dr .btn,
+  :root.dr .lang{
+    letter-spacing:0;
+    text-transform:none;
+  }
+  :root.dr .reason,
+  :root.dr .tagline,
+  :root.dr .letter .signoff .line{font-style:normal}
+  :root.dr .name{font-weight:700;line-height:1.25;font-size:clamp(3.2rem,12vw,6.5rem)}
+  :root.dr .letter .salutation{line-height:1.5}
+  :root.dr .letter .signoff .big{line-height:1.6}
+  :root.dr .env .ar{font-size:1.35rem}
 
   *,*::before,*::after{box-sizing:border-box}
 
@@ -34,7 +61,7 @@
     font-family:var(--sans);
     font-size:clamp(1rem,.97rem + .25vw,1.1rem);
     font-weight:500;
-    line-height:1.7;
+    line-height:var(--body-lh);
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
   }
@@ -86,7 +113,7 @@
     max-width:62rem;
     margin:0 auto;
     padding-inline:clamp(1rem,5vw,3rem);
-    padding-block:clamp(2.25rem,6vw,4.5rem) clamp(2.5rem,7vw,5rem);
+    padding-block:clamp(1.5rem,4vw,2.5rem) clamp(2.5rem,7vw,5rem);
   }
 
   .eyebrow{
@@ -98,6 +125,39 @@
     color:var(--pink-deep);
     margin:0;
   }
+
+  /* ---------- language switch ---------- */
+  .langbar{
+    display:flex;
+    justify-content:center;
+    margin-bottom:clamp(1.5rem,4vw,2.5rem);
+  }
+  .langbar .group{
+    display:inline-flex;
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:.28rem;
+    box-shadow:var(--shadow);
+    gap:.2rem;
+  }
+  .lang{
+    font-family:var(--sans);
+    font-size:.8rem;
+    font-weight:700;
+    letter-spacing:.08em;
+    color:var(--mauve);
+    background:transparent;
+    border:none;
+    border-radius:999px;
+    padding:.5rem 1.15rem;
+    cursor:pointer;
+    transition:background .2s ease,color .2s ease;
+  }
+  .lang:hover{color:var(--pink-deep)}
+  .lang[aria-pressed="true"]{background:var(--pink-deep);color:var(--white)}
+  .lang:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  .lang.ar{font-family:var(--arabic);font-size:1rem}
 
   /* ---------- birthday banner (3 January only) ---------- */
   .bday{
@@ -116,7 +176,7 @@
   .bday .big{
     font-family:var(--script);
     font-size:clamp(2.2rem,1.6rem + 3vw,3.6rem);
-    line-height:1.05;
+    line-height:1.15;
   }
   .bday p{margin:0;font-size:.98rem;opacity:.95;max-width:34rem}
 
@@ -170,7 +230,7 @@
   .badge{
     position:absolute;
     z-index:2;
-    right:4%;
+    inset-inline-end:4%;
     bottom:4%;
     width:3.4rem;
     height:3.4rem;
@@ -203,7 +263,7 @@
     font-family:var(--serif);
     font-style:italic;
     font-size:clamp(1.15rem,1rem + .8vw,1.7rem);
-    line-height:1.4;
+    line-height:1.5;
     color:var(--plum);
     margin:0;
     max-width:32rem;
@@ -237,9 +297,9 @@
   }
   .stat .num{
     font-family:var(--serif);
-    font-weight:600;
+    font-weight:700;
     font-size:clamp(2rem,1.6rem + 1.6vw,2.9rem);
-    line-height:1.05;
+    line-height:1.15;
     color:var(--pink-deep);
     font-variant-numeric:tabular-nums;
   }
@@ -253,7 +313,7 @@
   .stat .cap{
     font-size:.86rem;
     color:var(--mauve);
-    line-height:1.45;
+    line-height:1.5;
     margin-top:.25rem;
   }
 
@@ -284,9 +344,9 @@
   }
   .section-head h2{
     font-family:var(--serif);
-    font-weight:600;
+    font-weight:700;
     font-size:clamp(1.8rem,1.4rem + 2vw,2.9rem);
-    line-height:1.15;
+    line-height:1.25;
     margin:0;
     color:var(--plum);
     text-wrap:balance;
@@ -308,7 +368,7 @@
   .story::before{
     content:"";
     position:absolute;
-    left:11px;
+    inset-inline-start:11px;
     top:.6rem;
     bottom:.6rem;
     width:2px;
@@ -317,14 +377,14 @@
   }
   .story li{
     position:relative;
-    padding-left:3rem;
+    padding-inline-start:3rem;
     padding-bottom:1.9rem;
   }
   .story li:last-child{padding-bottom:0}
   .story .dot{
     position:absolute;
-    left:0;
-    top:.15rem;
+    inset-inline-start:0;
+    top:.35rem;
     width:24px;height:24px;
     border-radius:50%;
     background:var(--white);
@@ -341,12 +401,12 @@
   }
   .story h3{
     font-family:var(--serif);
-    font-size:1.25rem;
-    font-weight:600;
+    font-size:1.3rem;
+    font-weight:700;
     margin:.15rem 0 .35rem;
     color:var(--plum);
   }
-  .story p{margin:0;color:var(--mauve);font-size:.98rem;line-height:1.65}
+  .story p{margin:0;color:var(--mauve);font-size:.98rem;line-height:1.7}
 
   /* ---------- reason card ---------- */
   .reason-card{
@@ -384,11 +444,11 @@
     font-style:italic;
     font-weight:400;
     font-size:clamp(1.35rem,1.05rem + 1.7vw,2.25rem);
-    line-height:1.35;
+    line-height:1.45;
     color:var(--plum);
     margin:0;
     max-width:30rem;
-    min-height:2.7em;
+    min-height:2.9em;
     text-wrap:balance;
     transition:opacity .35s ease,transform .35s ease;
   }
@@ -444,12 +504,12 @@
   }
   .truth h3{
     font-family:var(--serif);
-    font-size:1.2rem;
-    font-weight:600;
+    font-size:1.25rem;
+    font-weight:700;
     margin:0;
     color:var(--plum);
   }
-  .truth p{margin:0;color:var(--mauve);font-size:.98rem;line-height:1.6}
+  .truth p{margin:0;color:var(--mauve);font-size:.98rem;line-height:1.65}
 
   /* ---------- open when ---------- */
   .envelopes{
@@ -469,8 +529,8 @@
     list-style:none;
     padding:1.4rem 1.5rem;
     font-family:var(--serif);
-    font-size:1.1rem;
-    font-weight:600;
+    font-size:1.12rem;
+    font-weight:700;
     color:var(--pink-deep);
     display:flex;
     align-items:center;
@@ -487,12 +547,12 @@
     padding:0 1.5rem 1.5rem;
     color:var(--plum);
     font-size:.98rem;
-    line-height:1.7;
+    line-height:1.75;
   }
   .env .ar{
     font-family:var(--arabic);
     font-size:1.5rem;
-    line-height:1.9;
+    line-height:2;
     color:var(--pink-deep);
     direction:rtl;
     text-align:right;
@@ -502,13 +562,11 @@
     font-family:var(--serif);
     font-style:italic;
     font-size:1.1rem;
+    line-height:1.6;
     color:var(--plum);
     padding-bottom:.35rem;
   }
-  .env .gloss{
-    font-size:.82rem;
-    color:var(--mauve);
-  }
+  .env .gloss{font-size:.82rem;color:var(--mauve)}
 
   /* ---------- letter ---------- */
   .letter{
@@ -527,7 +585,7 @@
   .letter .salutation{
     font-family:var(--script);
     font-size:clamp(2.1rem,1.6rem + 2vw,3rem);
-    line-height:1;
+    line-height:1.1;
     color:var(--pink-deep);
     margin:0 0 .3rem;
   }
@@ -550,7 +608,7 @@
   .letter .signoff .big{
     font-family:var(--script);
     font-size:clamp(2.2rem,1.7rem + 2vw,3.1rem);
-    line-height:1.15;
+    line-height:1.2;
     color:var(--pink-deep);
   }
   .letter .signoff .small{
@@ -591,9 +649,16 @@
 
 <main class="page">
 
+  <div class="langbar">
+    <div class="group" role="group" aria-label="Language">
+      <button class="lang" type="button" id="lang-en" data-lang="en" aria-pressed="true">English</button>
+      <button class="lang ar" type="button" id="lang-dr" data-lang="dr" aria-pressed="false" lang="ar">بالدارجة</button>
+    </div>
+  </div>
+
   <section class="bday" id="bday" hidden>
-    <span class="big">Joyeux anniversaire, Rihab</span>
-    <p>It is the 3rd of January, which means the world got you today. Happy birthday, my love. Every good thing that has happened to me started with you being born.</p>
+    <span class="big" data-en="Joyeux anniversaire, Rihab" data-dr="عيد ميلاد سعيد أ رحاب">Joyeux anniversaire, Rihab</span>
+    <p data-en="It is the 3rd of January, which means the world got you today. Happy birthday, my love. Every good thing that has happened to me started with you being born." data-dr="اليوم 3 يناير، يعني اليوم اللي الدنيا ربحات فيه نتي. عيد ميلاد سعيد يا حبيبتي. كل حاجة زوينة وقعات ليا بدات من اليوم اللي تزادي فيه.">It is the 3rd of January, which means the world got you today. Happy birthday, my love. Every good thing that has happened to me started with you being born.</p>
   </section>
 
   <section class="hero">
@@ -606,27 +671,27 @@
       </div>
     </div>
 
-    <p class="eyebrow rise d2">three years of almost, and then you</p>
-    <h1 class="name rise d2">Rihab</h1>
-    <p class="tagline rise d3">You are the love of my life &mdash; and this whole little corner of the internet exists just to say so.</p>
-    <p class="hero-note rise d4">Made for you by Abdeljalil, so that on any day you forget how amazing you are, you have somewhere soft to go and be reminded.</p>
+    <p class="eyebrow rise d2" data-en="three years of almost, and then you" data-dr="تلات سنين ديال التسنى، ومن بعد جيتي نتي">three years of almost, and then you</p>
+    <h1 class="name rise d2" data-en="Rihab" data-dr="رحاب">Rihab</h1>
+    <p class="tagline rise d3" data-en="You are the love of my life — and this whole little corner of the internet exists just to say so." data-dr="نتي الحب ديال حياتي — وهاد الصفحة كاملة ما كاينة غير باش تقول ليك هادشي.">You are the love of my life &mdash; and this whole little corner of the internet exists just to say so.</p>
+    <p class="hero-note rise d4" data-en="Made for you by Abdeljalil, so that on any day you forget how amazing you are, you have somewhere soft to go and be reminded." data-dr="دارها ليك عبد الجليل، باش فأي نهار تنساي فيه شحال نتي غالية وزوينة، تلقاي فين ترجعي وتتفكري.">Made for you by Abdeljalil, so that on any day you forget how amazing you are, you have somewhere soft to go and be reminded.</p>
   </section>
 
   <section class="stats" aria-label="Our numbers">
     <div class="stat">
       <span class="num" id="days-num">1</span>
       <span class="unit" id="days-unit">day</span>
-      <span class="cap">of us, officially. Since 18 September 2026.</span>
+      <span class="cap" data-en="of us, officially. Since 18 September 2026." data-dr="ديال حنا بجوج، من 18 شتنبر 2026.">of us, officially. Since 18 September 2026.</span>
     </div>
     <div class="stat">
       <span class="num">3</span>
-      <span class="unit">years</span>
-      <span class="cap">that the world made us wait for each other.</span>
+      <span class="unit" data-en="years" data-dr="سنين">years</span>
+      <span class="cap" data-en="that the world made us wait for each other." data-dr="والدنيا خلاتنا كنتسناو فبعضياتنا.">that the world made us wait for each other.</span>
     </div>
     <div class="stat">
       <span class="num" id="bday-num">&mdash;</span>
       <span class="unit" id="bday-unit">days</span>
-      <span class="cap">until the 3rd of January, my favourite holiday.</span>
+      <span class="cap" data-en="until the 3rd of January, my favourite holiday." data-dr="باقي لـ3 يناير، أحسن عيد عندي.">until the 3rd of January, my favourite holiday.</span>
     </div>
   </section>
 
@@ -638,35 +703,35 @@
 
   <section>
     <div class="section-head">
-      <p class="eyebrow">how we got here</p>
-      <h2>Our story, so far</h2>
-      <p>It took the long way around. I would take the long way again.</p>
+      <p class="eyebrow" data-en="how we got here" data-dr="كيفاش وصلنا لهنا">how we got here</p>
+      <h2 data-en="Our story, so far" data-dr="القصة ديالنا، حتى لدابا">Our story, so far</h2>
+      <p data-en="It took the long way around. I would take the long way again." data-dr="داز الطريق الطويل. ولو كان خاصني نعاودو، غادي نعاودو.">It took the long way around. I would take the long way again.</p>
     </div>
 
     <ol class="story">
       <li>
         <span class="dot" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg></span>
-        <span class="when">Three years ago</span>
-        <h3>I met you</h3>
-        <p>I did not know yet that I was meeting <em>the</em> person. You were just there, being completely yourself, and something in me quietly took note of you and never let it go.</p>
+        <span class="when" data-en="Three years ago" data-dr="هادي تلات سنين">Three years ago</span>
+        <h3 data-en="I met you" data-dr="تلاقينا">I met you</h3>
+        <p data-en="I did not know yet that I was meeting the person. You were just there, being completely yourself, and something in me quietly took note of you and never let it go." data-dr="مازال ماكنتش عارف بللي كنتلاقى مع الإنسانة ديال حياتي. كنتي غير تما، كتكوني راسك بلا تكلف، وشي حاجة فيا سجلاتك وعمرها ماتخلات عليك.">I did not know yet that I was meeting the person. You were just there, being completely yourself, and something in me quietly took note of you and never let it go.</p>
       </li>
       <li>
         <span class="dot" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg></span>
-        <span class="when">Then life interfered</span>
-        <h3>The years apart</h3>
-        <p>I left the university for a private school, and just like that we were in different stories. Different places, different days, no way back to each other. Three years of almost. I want you to know that you did not leave my head in any of them.</p>
+        <span class="when" data-en="Then life interfered" data-dr="ومن بعد الحياة دخلات بيناتنا">Then life interfered</span>
+        <h3 data-en="The years apart" data-dr="السنين اللي فرقونا">The years apart</h3>
+        <p data-en="I left the university for a private school, and just like that we were in different stories. Different places, different days, no way back to each other. Three years of almost. I want you to know that you did not leave my head in any of them." data-dr="خرجت من الجامعة ومشيت لمدرسة خاصة، وبضربة وحدة ولينا فجوج قصص مختالفين. بلايص مختالفة، نهارات مختالفة، وحتى طريق ترجعنا لبعضياتنا. تلات سنين ديال «قريب». بغيتك تعرفي بللي فحتى وحدة منهم ماخرجتيش من بالي.">I left the university for a private school, and just like that we were in different stories. Different places, different days, no way back to each other. Three years of almost. I want you to know that you did not leave my head in any of them.</p>
       </li>
       <li>
         <span class="dot" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-9.6-9A5.4 5.4 0 0 1 12 6.4 5.4 5.4 0 0 1 21.6 12c-2.1 4.3-9.6 9-9.6 9z"/></svg></span>
-        <span class="when">18 September 2026</span>
-        <h3>Finally, us</h3>
-        <p>Yesterday. After three years of the world getting in the way, you said yes and the whole thing made sense at once. Everything before this was just the waiting room.</p>
+        <span class="when" data-en="18 September 2026" data-dr="18 شتنبر 2026">18 September 2026</span>
+        <h3 data-en="Finally, us" data-dr="أخيرا، حنا بجوج">Finally, us</h3>
+        <p data-en="After three years of the world getting in the way, we finally became us, and the whole thing made sense at once. Everything before this was just the waiting room." data-dr="من بعد تلات سنين والدنيا واقفة بيناتنا، ولينا أخيرا حنا بجوج، وكلشي ولا مفهوم بضربة وحدة. كلشي اللي داز قبل هادشي كان غير قاعة ديال التسنى.">After three years of the world getting in the way, we finally became us, and the whole thing made sense at once. Everything before this was just the waiting room.</p>
       </li>
       <li>
         <span class="dot" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 3v18M3 12h18"/></svg></span>
-        <span class="when">From here</span>
-        <h3>Everything else</h3>
-        <p>Every 3rd of January from now on, and every ordinary Tuesday in between. This page will keep counting the days for us. I intend to give it a very large number to count.</p>
+        <span class="when" data-en="From here" data-dr="من دابا">From here</span>
+        <h3 data-en="Everything else" data-dr="كلشي اللي جاي">Everything else</h3>
+        <p data-en="Every 3rd of January from now on, and every ordinary Tuesday in between. This page will keep counting the days for us. I intend to give it a very large number to count." data-dr="كل 3 يناير من دابا ولفوق، وكل نهار عادي بيناتهم. هاد الصفحة غادي تبقى كتحسب لينا النهارات. وأنا ناوي نعطيها رقم كبير بزاف باش تحسبو.">Every 3rd of January from now on, and every ordinary Tuesday in between. This page will keep counting the days for us. I intend to give it a very large number to count.</p>
       </li>
     </ol>
   </section>
@@ -679,16 +744,16 @@
 
   <section>
     <div class="section-head">
-      <p class="eyebrow">press the button, habibti</p>
-      <h2>Reasons I love you</h2>
-      <p>There are more than this. These are just the ones I could fit.</p>
+      <p class="eyebrow" data-en="press the button, habibti" data-dr="ضغطي على الزر أ حبيبتي">press the button, habibti</p>
+      <h2 data-en="Reasons I love you" data-dr="علاش كنبغيك">Reasons I love you</h2>
+      <p data-en="There are more than this. These are just the ones I could fit." data-dr="كاينين بزاف كتر من هادو. هادو غير اللي دخلو.">There are more than this. These are just the ones I could fit.</p>
     </div>
 
     <div class="reason-card">
       <p class="reason-no" id="reason-no">Reason no. 01</p>
       <p class="reason" id="reason" aria-live="polite">The way you say my name when you are happy about something.</p>
       <button class="btn" id="more" type="button">
-        One more reason
+        <span id="more-label">One more reason</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.7-9.6-9A5.4 5.4 0 0 1 12 6.4 5.4 5.4 0 0 1 21.6 12c-2.1 4.3-9.6 9-9.6 9z"/></svg>
       </button>
     </div>
@@ -702,40 +767,40 @@
 
   <section>
     <div class="section-head">
-      <p class="eyebrow">not opinions</p>
-      <h2>Things that are simply true about you</h2>
+      <p class="eyebrow" data-en="not opinions" data-dr="ماشي آراء">not opinions</p>
+      <h2 data-en="Things that are simply true about you" data-dr="حقائق فيك، وصافي">Things that are simply true about you</h2>
     </div>
 
     <ul class="truths">
       <li class="truth">
         <span class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-4 4 3.5 3.5 0 0 0-1 6.8V17a3 3 0 0 0 6 0V3z"/><path d="M12 3a4 4 0 0 1 4 4 3.5 3.5 0 0 1 1 6.8V17a3 3 0 0 1-6 0"/></svg></span>
-        <h3>Your mind</h3>
-        <p>You think in a way that makes complicated things sit down and behave. I have watched you untangle in ten minutes what other people circle for a week.</p>
+        <h3 data-en="Your mind" data-dr="العقل ديالك">Your mind</h3>
+        <p data-en="You think in a way that makes complicated things sit down and behave. I have watched you untangle in ten minutes what other people circle for a week." data-dr="كتفكري بطريقة كتخلي الحوايج المعقدة تولي ساهلة. شفتك كتحل فعشر دقايق حاجة ناس أخرين كيدوروا عليها سيمانة.">You think in a way that makes complicated things sit down and behave. I have watched you untangle in ten minutes what other people circle for a week.</p>
       </li>
       <li class="truth">
         <span class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg></span>
-        <h3>Your laugh</h3>
-        <p>It arrives before you mean it to, and it takes the whole room with it. It is my favourite sound on this earth, and it is not close.</p>
+        <h3 data-en="Your laugh" data-dr="الضحكة ديالك">Your laugh</h3>
+        <p data-en="It arrives before you mean it to, and it takes the whole room with it. It is my favourite sound on this earth, and it is not close." data-dr="كتجي قبل ما تقصديها، وكتدي معاها الجو كامل. هي أحسن صوت فهاد الدنيا عندي، وماكاين حتى صوت قريب ليها.">It arrives before you mean it to, and it takes the whole room with it. It is my favourite sound on this earth, and it is not close.</p>
       </li>
       <li class="truth">
         <span class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-9.6-9A5.4 5.4 0 0 1 12 6.4 5.4 5.4 0 0 1 21.6 12c-2.1 4.3-9.6 9-9.6 9z"/></svg></span>
-        <h3>Your heart</h3>
-        <p>You are kind in the unglamorous way &mdash; the kind that costs you something and asks for nothing back. Most people only perform that. You just do it, quietly.</p>
+        <h3 data-en="Your heart" data-dr="القلب ديالك">Your heart</h3>
+        <p data-en="You are kind in the unglamorous way — the kind that costs you something and asks for nothing back. Most people only perform that. You just do it, quietly." data-dr="نتي دريفة بطريقة هادية — الدرافة اللي كتكلفك شي حاجة وماكتطلبي والو فالمقابل. بزاف ديال الناس كيمثلو غير هادشي. نتي كتديريه بصح، وبلا حس.">You are kind in the unglamorous way &mdash; the kind that costs you something and asks for nothing back. Most people only perform that. You just do it, quietly.</p>
       </li>
       <li class="truth">
         <span class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.4 5.2 5.6.7-4.1 3.9 1.1 5.6L12 15.8 6.9 18.4 8 12.8 3.9 8.9l5.6-.7z"/></svg></span>
-        <h3>Your courage</h3>
-        <p>You have carried things that would have flattened most people, and you did it without going hard or cold. Staying soft after all of that is the bravest thing I know of.</p>
+        <h3 data-en="Your courage" data-dr="الشجاعة ديالك">Your courage</h3>
+        <p data-en="You have carried things that would have flattened most people, and you did it without going hard or cold. Staying soft after all of that is the bravest thing I know of." data-dr="دزتي من حوايج كانت غادي تكسر ناس أخرين، ودزتي منها بلا ما تقساحي ولا تبردي. بقيتي حنينة من بعد كولشي، وهادي أشجع حاجة عرفت.">You have carried things that would have flattened most people, and you did it without going hard or cold. Staying soft after all of that is the bravest thing I know of.</p>
       </li>
       <li class="truth">
         <span class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg></span>
-        <h3>Your presence</h3>
-        <p>Rooms are better when you are in them. That is not flattery, it is an observation other people keep making to me about you.</p>
+        <h3 data-en="Your presence" data-dr="الحضور ديالك">Your presence</h3>
+        <p data-en="Rooms are better when you are in them. That is not flattery, it is an observation other people keep making to me about you." data-dr="البلايص كتولي حسن ملي تكوني فيها. هادي ماشي مجاملة، هادشي كيقولوه ليا الناس عليك بوحدهم.">Rooms are better when you are in them. That is not flattery, it is an observation other people keep making to me about you.</p>
       </li>
       <li class="truth">
         <span class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 1 0-7.1 7.1L12 21.4l8.8-8.7a5 5 0 0 0 0-7.1z"/></svg></span>
-        <h3>Your effect on me</h3>
-        <p>You make me want to be a better version of myself &mdash; not by asking me to be, just by existing nearby. That is a strange and enormous power.</p>
+        <h3 data-en="Your effect on me" data-dr="التأثير ديالك عليا">Your effect on me</h3>
+        <p data-en="You make me want to be a better version of myself — not by asking me to be, just by existing nearby. That is a strange and enormous power." data-dr="كتخليني نبغي نولي أحسن نسخة من راسي — ماشي حيت طلبتي مني، غير حيت نتي حدايا. هادي قوة غريبة وكبيرة بزاف.">You make me want to be a better version of myself &mdash; not by asking me to be, just by existing nearby. That is a strange and enormous power.</p>
       </li>
     </ul>
   </section>
@@ -748,38 +813,38 @@
 
   <section>
     <div class="section-head">
-      <p class="eyebrow">little letters</p>
-      <h2>Open when&hellip;</h2>
-      <p>Tap the one that matches your day.</p>
+      <p class="eyebrow" data-en="little letters" data-dr="براوات صغار">little letters</p>
+      <h2 data-en="Open when…" data-dr="حلي ملي…">Open when&hellip;</h2>
+      <p data-en="Tap the one that matches your day." data-dr="ضغطي على اللي تشبه لنهارك.">Tap the one that matches your day.</p>
     </div>
 
     <div class="envelopes">
       <details class="env">
-        <summary><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg>you are sad</summary>
-        <p>Come here. You do not have to explain it or justify it or be productive about it. Sad days are not you failing, they are just weather. Sit in it, let it pass, and remember that there is someone whose whole day gets better the second your name appears on his screen. I am one message away, always.</p>
+        <summary><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg><span data-en="you are sad" data-dr="ملي تكوني حزينة">you are sad</span></summary>
+        <p data-en="Come here. You do not have to explain it or justify it or be productive about it. Sad days are not you failing, they are just weather. Sit in it, let it pass, and remember that there is someone whose whole day gets better the second your name appears on his screen. I am one message away, always." data-dr="أجي لهنا. ماخاصكش تشرحي ولا تبرري ولا تكوني قوية. النهارات الخايبة ماشي فشل منك، هي غير جو وكيدوز. گلسي فيها، خليها تدوز، وتفكري بللي كاين شي واحد نهارو كامل كيتبدل ملي كتبان سميتك فالتيليفون ديالو. أنا على بعد ميساج، ديما.">Come here. You do not have to explain it or justify it or be productive about it. Sad days are not you failing, they are just weather. Sit in it, let it pass, and remember that there is someone whose whole day gets better the second your name appears on his screen. I am one message away, always.</p>
       </details>
 
       <details class="env">
-        <summary><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg>you miss me</summary>
-        <p>I miss you too. Probably more, though I know you will argue about that. We already survived three years of missing each other &mdash; a few hours is nothing now. Distance is just the number of hours between now and the next time I get to look at you properly.</p>
+        <summary><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg><span data-en="you miss me" data-dr="ملي توحشيني">you miss me</span></summary>
+        <p data-en="I miss you too. Probably more, though I know you will argue about that. We already survived three years of missing each other — a few hours is nothing now. Distance is just the number of hours between now and the next time I get to look at you properly." data-dr="وأنا توحشتك. وياك كتر منك، رغم أني عارف بللي غادي تناقشيني فهادشي. حنا بجوج دزنا من تلات سنين ديال التوحاش — شي سوايع دابا والو. البعد هو غير عدد السوايع اللي باقيين حتى نعاود نشوفك مزيان.">I miss you too. Probably more, though I know you will argue about that. We already survived three years of missing each other &mdash; a few hours is nothing now. Distance is just the number of hours between now and the next time I get to look at you properly.</p>
       </details>
 
       <details class="env">
-        <summary><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg>you feel ugly</summary>
-        <p>Then your mirror is broken, because mine works perfectly. You are beautiful in a way that photographs keep failing to explain &mdash; and I am not only talking about your face, your eyes, or that smile that ruins me. You are beautiful the way a good song is beautiful. It is not up for debate. I was there. I saw you.</p>
+        <summary><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg><span data-en="you feel ugly" data-dr="ملي تحسي براسك ماشي زوينة">you feel ugly</span></summary>
+        <p data-en="Then your mirror is broken, because mine works perfectly. You are beautiful in a way that photographs keep failing to explain — and I am not only talking about your face, your eyes, or that smile that ruins me. You are beautiful the way a good song is beautiful. It is not up for debate. I was there. I saw you." data-dr="إذن المرايا ديالك خاصها التصليح، حيت ديالي خدامة مزيان. نتي زوينة بطريقة التصاور ماقدراتش توصلها — وماكنهضرش غير على الوجه ديالك، ولا عينيك، ولا داك الضحك اللي كيدوخني. نتي زوينة بحال شي أغنية زوينة. وهادشي ماكاينش فيه نقاش. أنا كنت تما. أنا شفتك.">Then your mirror is broken, because mine works perfectly. You are beautiful in a way that photographs keep failing to explain &mdash; and I am not only talking about your face, your eyes, or that smile that ruins me. You are beautiful the way a good song is beautiful. It is not up for debate. I was there. I saw you.</p>
       </details>
 
       <details class="env">
-        <summary><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg>you doubt yourself</summary>
-        <p>You are not behind. You are not too much. You are not failing. You are one of the most capable people I have ever met, and I am not a generous judge. Whatever you are doubting today, I would bet everything I own on you. I already did, in a way.</p>
+        <summary><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg><span data-en="you doubt yourself" data-dr="ملي تشكي فراسك">you doubt yourself</span></summary>
+        <p data-en="You are not behind. You are not too much. You are not failing. You are one of the most capable people I have ever met, and I am not a generous judge. Whatever you are doubting today, I would bet everything I own on you. I already did, in a way." data-dr="ماشي معطلة. ماشي بزاف. وماشي فاشلة. نتي من أقدر الناس اللي تلاقيت بيهم، وأنا ماشي ساهل باش نقول هادشي. مهما كان اللي كتشكي فيه اليوم، أنا مستعد نقامر بكلشي عندي عليك. وأصلا راه ديجا درتها.">You are not behind. You are not too much. You are not failing. You are one of the most capable people I have ever met, and I am not a generous judge. Whatever you are doubting today, I would bet everything I own on you. I already did, in a way.</p>
       </details>
 
       <details class="env">
-        <summary><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg>you want it in your language</summary>
-        <p class="ar" lang="ar" dir="rtl">&#1603;&#1606;&#1576;&#1594;&#1610;&#1603; &#1576;&#1586;&#1575;&#1601;&#1548; &#1606;&#1578;&#1610; &#1593;&#1605;&#1585;&#1610;</p>
-        <p class="gloss">Kanbghik bzaf, nti omri.</p>
+        <summary><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg><span data-en="you want to hear it plainly" data-dr="ملي تبغي تسمعيها نيشان">you want to hear it plainly</span></summary>
+        <p class="ar" lang="ar" dir="rtl">كنبغيك بزاف، نتي عمري.</p>
+        <p class="ar" lang="ar" dir="rtl">تسنيتك تلات سنين، ولو كان خاصني نتسناك كتر، كنت غادي نتسناك.</p>
         <p class="fr" lang="fr">Tu es la femme de ma vie, et j&rsquo;ai attendu trois ans pour te le dire.</p>
-        <p class="gloss">I love you so much, you are my life. You are the woman of my life, and I waited three years to tell you.</p>
+        <p class="gloss" data-en="“I love you so much, you are my life. I waited three years for you, and I would have waited longer.” And in French: “You are the woman of my life, and I waited three years to tell you.”" data-dr="وبالفرنسية: «نتي مرا حياتي، وتسنيت تلات سنين باش نقولها ليك».">&ldquo;I love you so much, you are my life. I waited three years for you, and I would have waited longer.&rdquo; And in French: &ldquo;You are the woman of my life, and I waited three years to tell you.&rdquo;</p>
       </details>
     </div>
   </section>
@@ -791,23 +856,23 @@
   </div>
 
   <section class="letter">
-    <p class="salutation">My Rihab,</p>
-    <p>I am not good at saying all of this out loud. It comes out smaller than I mean it, so I built it somewhere it could sit properly and stay.</p>
-    <p>Three years ago I met you, and then life did something stupid. I left the university for the private school, and the distance did the rest. I want you to know that in all that time, through everything that changed, you stayed exactly where you were in my head. I never fully put you down.</p>
-    <p>And then yesterday happened. After three years of almost, of wrong timing and wrong places, you are mine and I am yours, and I keep checking that it is real. It is real.</p>
-    <p>I know you are hard on yourself. I know there are days you look in the mirror and count only the things you would change. On those days, come here and read this in my voice: you are not too much, you are not behind, you are not failing. You are the most remarkable person I have ever met.</p>
-    <p>Whatever happens, whatever we build, wherever we end up &mdash; I am not going anywhere. Not after waiting this long. You are my favourite person, my calmest place, and the best thing that ever took the long way to me.</p>
+    <p class="salutation" data-en="My Rihab," data-dr="رحاب ديالي،">My Rihab,</p>
+    <p data-en="I am not good at saying all of this out loud. It comes out smaller than I mean it, so I built it somewhere it could sit properly and stay." data-dr="ماعرفتش نقول هادشي كامل بفمي. كيخرج ليا صغير على ما كنحس بيه، لهذا كتبتو هنا فبلاصة يقدر يبقى فيها.">I am not good at saying all of this out loud. It comes out smaller than I mean it, so I built it somewhere it could sit properly and stay.</p>
+    <p data-en="Three years ago I met you, and then life did something stupid. I left the university for the private school, and the distance did the rest. I want you to know that in all that time, through everything that changed, you stayed exactly where you were in my head. I never fully put you down." data-dr="هادي تلات سنين ملي تلاقينا، ومن بعد الحياة دارت شي حاجة خايبة. خرجت من الجامعة ومشيت للمدرسة الخاصة، والبعد دار الباقي. بغيتك تعرفي بللي فهاد المدة كاملة، ومع كلشي اللي تبدل، بقيتي فنفس البلاصة فراسي. عمرني حيدتك منها.">Three years ago I met you, and then life did something stupid. I left the university for the private school, and the distance did the rest. I want you to know that in all that time, through everything that changed, you stayed exactly where you were in my head. I never fully put you down.</p>
+    <p data-en="And then yesterday happened. After three years of almost, of wrong timing and wrong places, you are mine and I am yours, and I keep checking that it is real. It is real." data-dr="ومن بعد جا البارح. من بعد تلات سنين ديال «قريب»، ديال الوقت الغالط والبلاصة الغالطة، ولينا أنا ديالك ونتي ديالي، وباقي كنعاود نتأكد واش هادشي بصح. راه بصح.">And then yesterday happened. After three years of almost, of wrong timing and wrong places, you are mine and I am yours, and I keep checking that it is real. It is real.</p>
+    <p data-en="I know you are hard on yourself. I know there are days you look in the mirror and count only the things you would change. On those days, come here and read this in my voice: you are not too much, you are not behind, you are not failing. You are the most remarkable person I have ever met." data-dr="كنعرف بللي كتقساحي على راسك. كنعرف كاينين نهارات كتشوفي فالمرايا وكتحسبي غير النقايص. فداك النهارات، أجي لهنا وقراي هادشي بصوتي أنا: ماشي بزاف، ماشي معطلة، وماشي فاشلة. نتي أروع إنسانة تلاقيت بيها فحياتي.">I know you are hard on yourself. I know there are days you look in the mirror and count only the things you would change. On those days, come here and read this in my voice: you are not too much, you are not behind, you are not failing. You are the most remarkable person I have ever met.</p>
+    <p data-en="Whatever happens, whatever we build, wherever we end up — I am not going anywhere. Not after waiting this long. You are my favourite person, my calmest place, and the best thing that ever took the long way to me." data-dr="مهما وقع، ومهما بنينا، وفين ما وصلنا — أنا ماغاديش نمشي. ماشي من بعد ما تسنيت هاد المدة كاملة. نتي الإنسانة المفضلة عندي، والبلاصة اللي كنرتاح فيها، وأحسن حاجة اللي وصلاتني من الطريق الطويل.">Whatever happens, whatever we build, wherever we end up &mdash; I am not going anywhere. Not after waiting this long. You are my favourite person, my calmest place, and the best thing that ever took the long way to me.</p>
 
     <div class="signoff">
-      <span class="line">You are the love of my life.</span>
-      <span class="big">Abdeljalil</span>
-      <span class="small">yours, since 18 september 2026</span>
+      <span class="line" data-en="You are the love of my life." data-dr="نتي الحب ديال حياتي.">You are the love of my life.</span>
+      <span class="big" data-en="Abdeljalil" data-dr="عبد الجليل">Abdeljalil</span>
+      <span class="small" data-en="yours, since 18 september 2026" data-dr="ديالك، من 18 شتنبر 2026">yours, since 18 september 2026</span>
     </div>
   </section>
 
   <footer>
     <svg class="heart" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.7-9.6-9A5.4 5.4 0 0 1 12 6.4 5.4 5.4 0 0 1 21.6 12c-2.1 4.3-9.6 9-9.6 9z"/></svg>
-    <p>Come back whenever you need it. This page does not expire, it does not get tired of you, and neither do I.</p>
+    <p data-en="Come back whenever you need it. This page does not expire, it does not get tired of you, and neither do I." data-dr="رجعي لهاد الصفحة ملي تحتاجيها. هاد الصفحة ماكتساليش، وماكتعياش منك، وحتى أنا بحالها.">Come back whenever you need it. This page does not expire, it does not get tired of you, and neither do I.</p>
   </footer>
 
 </main>
@@ -832,7 +897,6 @@
         sparkleBox.appendChild(dot);
       }
     }
-
     var heartBox = document.getElementById("hearts");
     if (heartBox) {
       var HEART = '<svg width="0" height="0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-9.6-9A5.4 5.4 0 0 1 12 6.4 5.4 5.4 0 0 1 21.6 12c-2.1 4.3-9.6 9-9.6 9z"/></svg>';
@@ -849,101 +913,173 @@
     }
   }
 
-  /* ---- the counters: day one was 18 September 2026 ---- */
+  /* ---- reasons, in both languages ---- */
+  var REASONS = {
+    en: [
+      "The way you say my name when you are happy about something.",
+      "How you notice the one person in the room that nobody else noticed.",
+      "Your handwriting.",
+      "The face you make when you are concentrating hard on something small.",
+      "You remember things I mentioned once, months ago, and never repeated.",
+      "How you start laughing at your own story before you reach the end of it.",
+      "You are impossible to win an argument against, and I love losing to you.",
+      "The way you look in the morning, before the day has got to you.",
+      "You have never once made me feel small so that you could feel bigger.",
+      "How seriously you take the people you love.",
+      "Your taste. In music, in food, in people, in everything.",
+      "The way you dance when you think nobody is watching. I am always watching.",
+      "You ask better questions than anyone I know.",
+      "How completely you get excited about things, with no embarrassment about it.",
+      "You forgive faster than you should, and somehow it has made you stronger, not softer.",
+      "The way your hair does exactly what it wants near the sea.",
+      "You tell me the truth, including the version I did not want.",
+      "How safe the world gets when it is just the two of us.",
+      "You make ordinary days feel like something worth remembering.",
+      "Your patience with me, which I have tested and will absolutely test again.",
+      "The way you look after your people like it is a full-time job that you love.",
+      "You are beautiful in a way that photographs keep failing to explain properly.",
+      "How you say “we” without having to think about it.",
+      "The way you fall asleep in the middle of your own sentence.",
+      "You are the calm in the middle of all my noise.",
+      "Your stubbornness. Yes, that one too.",
+      "How you can make me laugh on a day I had firmly decided not to.",
+      "That you waited three years, and so did I, without either of us saying it.",
+      "That you chose me. On purpose. And that you keep choosing me."
+    ],
+    dr: [
+      "كيفاش كتعيطي على سميتي ملي تكوني فرحانة.",
+      "كيفاش كتلاحظي الشخص الوحيد اللي حتى واحد ماتفكر فيه.",
+      "الخط ديالك.",
+      "الوجه اللي كتديري ملي تكوني مركزة على شي حاجة صغيرة.",
+      "كتعقلي على حوايج قلت ليك غير مرة وحدة هادي شهور.",
+      "كيفاش كتبداي تضحكي على القصة ديالك قبل ما تسالي.",
+      "مستحيل نربح معاك فشي مناقشة، وكنبغي نخسر قدامك.",
+      "كيفاش كتباني فالصباح، قبل ما يبدا النهار.",
+      "عمرك ماخليتيني نحس براسي صغير باش نتي تكبري.",
+      "شحال كتاخدي بجدية الناس اللي كتبغي.",
+      "الذوق ديالك. فالموسيقى، فالماكلة، فالناس، فكلشي.",
+      "كيفاش كتشطحي ملي تظني بللي حتى واحد ماكيشوف. أنا ديما كنشوف.",
+      "كتسولي أسئلة حسن من أي واحد عرفتو.",
+      "كيفاش كتفرحي بالحوايج بكل قلبك وبلا ما تحشمي.",
+      "كتسامحي بزربة كتر من اللازم، وهادشي زادك قوة ماشي ضعف.",
+      "كيفاش شعرك كيدير اللي بغا حدا البحر.",
+      "كتقولي ليا الحقيقة، حتى النسخة اللي ماكنتش باغيها.",
+      "شحال كتولي الدنيا آمنة ملي نكونو غير حنا بجوج.",
+      "كتخلي النهارات العادية تستاهل تتعقل.",
+      "الصبر ديالك عليا، اللي جربتو وغادي نعاود نجربو.",
+      "كيفاش كتهلاي فالناس ديالك بحال شي خدمة كتبغيها.",
+      "نتي زوينة بطريقة التصاور عمرها ماقدرات توصلها.",
+      "كيفاش كتقولي «حنا» بلا ما تفكري.",
+      "كيفاش كتنعسي فوسط الجملة ديالك.",
+      "نتي الهدوء فوسط الضجة ديالي.",
+      "العناد ديالك. أه، حتى هادي.",
+      "كيفاش كتقدري تضحكيني فنهار كنت قررت فيه ماضحكش.",
+      "بللي تسنيتي تلات سنين، وحتى أنا، بلا ما شي واحد فينا يقولها.",
+      "بللي ختاريتيني. بقصد. وباقا كتختاريني كل نهار."
+    ]
+  };
+
+  var COPY = {
+    en: { no: "Reason no. ", more: "One more reason", day: "day", days: "days", years: "years", today: "it is today" },
+    dr: { no: "سباب رقم ", more: "عاود وحدة أخرى", day: "نهار", days: "يام", years: "سنين", today: "اليوم هو" }
+  };
+
+  /* ---- counters: day one was 18 September 2026 ---- */
   var DAY = 86400000;
   var now = new Date();
   var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
-  var start = new Date(2026, 8, 18);            // 18 September 2026
+  var start = new Date(2026, 8, 18);
   var dayCount = Math.floor((today - start) / DAY) + 1;
   if (dayCount < 1) { dayCount = 1; }
 
+  var bdayDate = new Date(today.getFullYear(), 0, 3);
+  if (today > bdayDate) { bdayDate = new Date(today.getFullYear() + 1, 0, 3); }
+  var untilBday = Math.round((bdayDate - today) / DAY);
+
   var daysNum = document.getElementById("days-num");
   var daysUnit = document.getElementById("days-unit");
-  if (daysNum && daysUnit) {
-    daysNum.textContent = dayCount.toLocaleString();
-    daysUnit.textContent = dayCount === 1 ? "day" : "days";
-  }
-
-  // her birthday: 3 January
-  var bday = new Date(today.getFullYear(), 0, 3);
-  if (today > bday) { bday = new Date(today.getFullYear() + 1, 0, 3); }
-  var untilBday = Math.round((bday - today) / DAY);
-
   var bdayNum = document.getElementById("bday-num");
   var bdayUnit = document.getElementById("bday-unit");
-  if (bdayNum && bdayUnit) {
-    if (untilBday === 0) {
-      bdayNum.textContent = "0";
-      bdayUnit.textContent = "it is today";
-    } else {
-      bdayNum.textContent = String(untilBday);
-      bdayUnit.textContent = untilBday === 1 ? "day" : "days";
-    }
-  }
-
-  // birthday mode
   var banner = document.getElementById("bday");
-  if (banner && today.getMonth() === 0 && today.getDate() === 3) {
-    banner.hidden = false;
+  var reasonEl = document.getElementById("reason");
+  var reasonNo = document.getElementById("reason-no");
+  var moreBtn = document.getElementById("more");
+  var moreLabel = document.getElementById("more-label");
+
+  if (banner && today.getMonth() === 0 && today.getDate() === 3) { banner.hidden = false; }
+
+  /* one shuffled running order, shared by both languages */
+  var order = [];
+  for (var i = 0; i < REASONS.en.length; i++) { order.push(i); }
+  var tail = order.slice(1);
+  for (var k = tail.length - 1; k > 0; k--) {
+    var r = Math.floor(Math.random() * (k + 1));
+    var tmp = tail[k]; tail[k] = tail[r]; tail[r] = tmp;
   }
-
-  /* ---- reasons ---- */
-  var reasons = [
-    "The way you say my name when you are happy about something.",
-    "How you notice the one person in the room that nobody else noticed.",
-    "Your handwriting.",
-    "The face you make when you are concentrating hard on something small.",
-    "You remember things I mentioned once, months ago, and never repeated.",
-    "How you start laughing at your own story before you reach the end of it.",
-    "You are impossible to win an argument against, and I love losing to you.",
-    "The way you look in the morning, before the day has got to you.",
-    "You have never once made me feel small so that you could feel bigger.",
-    "How seriously you take the people you love.",
-    "Your taste. In music, in food, in people, in everything.",
-    "The way you dance when you think nobody is watching. I am always watching.",
-    "You ask better questions than anyone I know.",
-    "How completely you get excited about things, with no embarrassment about it.",
-    "You forgive faster than you should, and somehow it has made you stronger, not softer.",
-    "The way your hair does exactly what it wants near the sea.",
-    "You tell me the truth, including the version I did not want.",
-    "How safe the world gets when it is just the two of us.",
-    "You make ordinary days feel like something worth remembering.",
-    "Your patience with me, which I have tested and will absolutely test again.",
-    "The way you look after your people like it is a full-time job that you love.",
-    "You are beautiful in a way that photographs keep failing to explain properly.",
-    "How you say “we” without having to think about it.",
-    "The way you fall asleep in the middle of your own sentence.",
-    "You are the calm in the middle of all my noise.",
-    "Your stubbornness. Yes, that one too.",
-    "How you can make me laugh on a day I had firmly decided not to.",
-    "That you waited three years, and so did I, without either of us saying it.",
-    "That you chose me. On purpose. And that you keep choosing me."
-  ];
-
-  var el = document.getElementById("reason");
-  var no = document.getElementById("reason-no");
-  var btn = document.getElementById("more");
-  if (!el || !no || !btn) { return; }
-
-  var rest = reasons.slice(1);
-  for (var i = rest.length - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
-    var t = rest[i]; rest[i] = rest[j]; rest[j] = t;
-  }
-  var order = [reasons[0]].concat(rest);
-  var idx = 0;
+  order = [0].concat(tail);
+  var pos = 0;
+  var lang = "en";
 
   function pad(n) { return n < 10 ? "0" + n : String(n); }
 
-  btn.addEventListener("click", function () {
-    idx = (idx + 1) % order.length;
-    el.classList.add("turning");
-    window.setTimeout(function () {
-      el.textContent = order[idx];
-      no.textContent = "Reason no. " + pad(idx + 1);
-      el.classList.remove("turning");
-    }, reduce ? 0 : 250);
-  });
+  function paintReason() {
+    if (!reasonEl || !reasonNo) { return; }
+    reasonEl.textContent = REASONS[lang][order[pos]];
+    reasonNo.textContent = COPY[lang].no + pad(pos + 1);
+  }
+
+  function applyLang(next) {
+    lang = (next === "dr") ? "dr" : "en";
+    var root = document.documentElement;
+    root.classList.toggle("dr", lang === "dr");
+    root.setAttribute("lang", lang === "dr" ? "ar" : "en");
+    root.setAttribute("dir", lang === "dr" ? "rtl" : "ltr");
+
+    var nodes = document.querySelectorAll("[data-en]");
+    for (var n = 0; n < nodes.length; n++) {
+      var val = nodes[n].getAttribute(lang === "dr" ? "data-dr" : "data-en");
+      if (val) { nodes[n].textContent = val; }
+    }
+
+    if (daysNum && daysUnit) {
+      daysNum.textContent = String(dayCount);
+      daysUnit.textContent = dayCount === 1 ? COPY[lang].day : COPY[lang].days;
+    }
+    if (bdayNum && bdayUnit) {
+      bdayNum.textContent = String(untilBday);
+      bdayUnit.textContent = untilBday === 0 ? COPY[lang].today : (untilBday === 1 ? COPY[lang].day : COPY[lang].days);
+    }
+    if (moreLabel) { moreLabel.textContent = COPY[lang].more; }
+    paintReason();
+
+    var buttons = document.querySelectorAll(".lang");
+    for (var b = 0; b < buttons.length; b++) {
+      buttons[b].setAttribute("aria-pressed", buttons[b].getAttribute("data-lang") === lang ? "true" : "false");
+    }
+    try { window.localStorage.setItem("rihab-lang", lang); } catch (e) {}
+  }
+
+  var saved = "en";
+  try { saved = window.localStorage.getItem("rihab-lang") || "en"; } catch (e) {}
+  applyLang(saved);
+
+  var langButtons = document.querySelectorAll(".lang");
+  for (var lb = 0; lb < langButtons.length; lb++) {
+    langButtons[lb].addEventListener("click", function () {
+      applyLang(this.getAttribute("data-lang"));
+    });
+  }
+
+  if (moreBtn && reasonEl) {
+    moreBtn.addEventListener("click", function () {
+      pos = (pos + 1) % order.length;
+      reasonEl.classList.add("turning");
+      window.setTimeout(function () {
+        paintReason();
+        reasonEl.classList.remove("turning");
+      }, reduce ? 0 : 250);
+    });
+  }
 })();
 </script>
